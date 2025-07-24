@@ -1,0 +1,637 @@
+----------------------------------------PROGRAM 1---------------------------------------------------
+
+echo hello bash
+
+touch questionnaire.sh
+
+echo hello questionnaire       // open file first, then put taht in 1st line
+
+sh questionnaire.sh
+
+bash questionnaire.sh
+
+which bash
+
+#!/bin/bash                // open file first, then put taht in 1st line
+
+./questionnaire.sh
+
+ls -l
+
+chmod +x questionnaire.sh
+
+ls -l
+
+./questionnaire.sh
+
+ls -l                          // open file first, then put that in last line
+
+./questionnaire.sh
+
+// open file first, then delete all but shabang
+
+QUESTION1="What's your name?" // open file first, then put that in last line
+
+echo $QUESTION1              // open file first, then put that in last line
+
+./questionnaire.sh
+
+read NAME                   // open file first, then put that in last line
+
+echo Hello $NAME.                   // open file first, then put that in last line
+
+./questionnaire.sh
+
+QUESTION2="Where are you from?" // open file first, then put that beneath q1
+
+echo $QUESTION2              // open file first, beneath read $NAME
+
+read LOCATION               // open file, beneath echo q2
+
+echo Hello $NAME from $LOCATION. // open file, delete last line, then add this to last line.
+
+./questionnaire.sh
+
+echo ~~ Questionnaire ~~     // open file, add this right after the shabang
+
+./questionnaire.sh
+
+echo --help
+
+man echo
+
+echo ~~ Questionnaire ~~ --> echo -e \n~~ Questionnaire ~~\n    // open file, replace this right after the shabang
+
+./questionnaire.sh
+
+echo echo -e \n~~ Questionnaire ~~\n --> echo -e "\n~~ Questionnaire ~~\n"    // open file, replace this right after the shabang
+
+./questionnaire.sh
+
+QUESTION3="What's your favorite coding website?" // open file first, then put that beneath q2
+
+echo $QUESTION3              // open file first, beneath read $LOCATION
+
+read WEBSITE                // beneath echo q3
+
+echo Hello $NAME from $LOCATION. I learned that your favorite coding website is $WEBSITE! // change last line
+
+./questionnaire.sh
+
+echo -e "\nHello $NAME from $LOCATION. I learned that your favorite coding website is $WEBSITE!" // change last line
+
+./questionnaire.sh
+
+
+----------------------------------------looks-------------------------------------------------------
+
+#!/bin/bash
+echo -e "\n~~ Questionnaire ~~\n"
+
+QUESTION1="What's your name?"
+QUESTION2="Where are you from?"
+QUESTION3="What's your favorite coding website?"
+
+echo $QUESTION1
+
+read NAME
+
+echo $QUESTION2
+
+read LOCATION
+
+echo $QUESTION3
+
+read WEBSITE
+
+echo -e "\nHello $NAME from $LOCATION. I learned that your favorite coding website is $WEBSITE!"
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------PROGRAM 2---------------------------------------------------
+
+touch countdown.sh
+
+chmod +x countdown.sh
+
+#!/bin/bash                         // open file and add
+
+#Program that counts down to zero from a given argument // open file and add after shabang
+
+echo $*                             // open file and add at end
+
+./countdown.sh
+
+./countdown.sh arg1 arg2 arg3
+
+echo $1                             // open file and replace echo $*
+
+./countdown.sh arg1 arg2 arg3
+
+help
+
+man if
+
+help if
+
+if [[ $1 == arg1 ]]                 // open file and replace echo $1
+then
+  echo true
+fi
+
+./countdown.sh arg1
+
+./countdown.sh anything
+
+else                                // open file and add after then...statements...
+  echo false
+
+./countdown.sh anything
+
+[[ $1 -lt 5 ]]                      // open file and replace if condition
+
+./countdown.sh 4
+
+./countdown.sh 5
+
+help
+
+help [[ expressions ]]
+
+help test
+
+[[ $1 -le 5 ]]                      // open file and replace if condition
+
+./countdown.sh 5
+
+[[ 4 -le 5 ]]
+
+echo $?                             // 1 is false and 0 is true
+
+[[ 4 -ge 5 ]]
+
+echo $?
+
+[[ 4 -ge 5 ]]; echo $?              // ; seperate commands on same line
+
+[[ 10 -ne 5 ]]; echo $?
+
+bad_command; echo $?
+
+ls; echo $?
+
+ls -y; echo $?
+
+help test
+
+[[ -a countdown.sh ]]; echo $?
+
+[[ -a bad_file.txt ]]; echo $?
+
+[[ -x countdown.sh ]]; echo $?
+
+help [[                             // same as help [[ expressions ]]
+
+[[ -x countdown.sh && 5 -le 4 ]]; echo $?
+
+[[ -x countdown.sh || 5 -le 4 ]]; echo $?
+
+[[ $1 -gt 0 ]]                      // open file and change if statement
+
+echo Include a positive integer as the first argument. // open file and change else statement
+
+./countdown.sh 1
+
+./countdown.sh -1
+
+help
+
+for (( i = $1; i > 0; i-- ))        // open file and change if true statement
+do
+  echo $i
+done
+
+./countdown.sh 10
+
+help
+
+ls /
+
+ls /bin
+
+man sleep
+
+sleep 3
+
+sleep 1                             // open file and add after statement and do
+
+./countdown.sh 3
+
+(( i = $1; i >= 0; i-- ))           // open file and change for condition
+
+./countdown.sh 3
+
+echo -e "\n~~ Countdown Timer ~~\n" // open file and add after shabang
+
+./countdown.sh 1
+
+: '                                 // open file and comment out for loop
+for loop...
+'
+
+help while
+
+I=$1                                // open file and add after comment
+
+while [[ $I -ge 0 ]]                // open file and add after I=$1
+do
+  echo $I
+done
+
+(( I-- ))                           // open file and add after echo $I
+
+sleep 1                             // open file and add after (( I-- ))
+
+./countdown.sh 5
+
+----------------------------------------looks-------------------------------------------------------
+
+#!/bin/bash
+echo -e "\n~~ Countdown Timer ~~\n"
+
+#Program that counts down to zero from a given argument
+
+if [[ $1 -gt 0 ]]
+then
+: '
+for (( i = $1; i >= 0; i-- ))
+do
+  echo $i
+  sleep 1
+done
+'
+I=$1
+while [[ $I -ge 0 ]]
+do
+  echo $I
+  (( I-- ))
+  sleep 1
+done
+else
+  echo Include a positive integer as the first argument.
+fi
+
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------PROGRAM 3---------------------------------------------------
+
+touch bingo.sh
+
+chmod +x bingo.sh
+
+#!/bin/bash                             // open file and add at top
+
+# Bingo Number Generator                // open file and add after shabang
+
+echo -e "\n~~ Bingo Number Generator ~~\n" // open file and add after comment
+
+NUMBER=5                                // open file and add after title
+
+echo $NUMBER                            // open file and add after NUM declaration
+
+./bingo.sh
+
+printenv
+
+echo $LANG
+
+declare -p
+
+NUMBER=$RANDOM                          // open file and change RAN declaration
+
+./bingo.sh
+./bingo.sh
+
+NUMBER=$RANDOM%75                       // open file and change RAN declaration, %number = max number.
+
+./bingo.sh
+
+I=0
+
+echo $I
+
+(( I++ ))
+
+echo $I
+
+help let
+
+(( I += 10 ))
+
+echo $I
+
+$(( I + 4 ))
+
+echo $(( I + 4 ))
+
+echo $I
+
+J=$(( $I - 6 ))
+
+echo $J
+
+echo $((J * 5 + 25))
+
+echo $J
+
+declare -p
+
+declare -p J
+
+declare -p RANDOM
+
+echo $(( RANDOM % 75 ))
+
+echo $(( RANDOM % 75 + 1 ))
+
+$(( RANDOM % 75 + 1 ))                  // OPEN FILE AND CHANGE NUMBER VAR INIT VALUE
+
+./bingo.sh
+./bingo.sh
+
+TEXT="The next number is, "             // OPEN FILE AND ADD TO BOTTOM
+
+help let
+
+if (( NUMBER <= 15 ))                   // OPEN FILE AND ADD TO BOTTOM
+then
+  echo $TEXT B:$NUMBER
+fi
+
+echo $NUMBER                            // OPEN FILE AND REMOVE
+
+elif [[ $NUMBER -le 30 ]]               // OPEN FILE AND ADD AFTER STATEMENT IN IF
+then
+  echo $TEXT I:$NUMBER
+
+elif (( NUMBER < 46 ))                  // OPEN FILE AND ADD AFTER STATEMENT IN ELIF
+then
+  echo $TEXT N:$NUMBER
+
+elif [[ $NUMBER -lt 61 ]]               // OPEN FILE AND ADD AFTER STATEMENT IN ELIF
+then
+  echo $TEXT G:$NUMBER
+
+else                                    // OPEN FILE AND ADD AFTER LAST ELIF
+  echo $TEXT O:$NUMBER
+
+./bingo.sh
+
+----------------------------------------looks-------------------------------------------------------
+
+#!/bin/bash
+
+# Bingo Number Generator
+
+echo -e "\n~~ Bingo Number Generator ~~\n"
+
+NUMBER=$(( RANDOM % 75 + 1 ))
+
+TEXT="The next number is, "
+
+if (( NUMBER <= 15 ))
+then
+  echo $TEXT B:$NUMBER
+elif [[ $NUMBER -le 30 ]]
+then
+  echo $TEXT I:$NUMBER
+elif (( NUMBER < 46 ))
+then
+  echo $TEXT N:$NUMBER
+elif [[ $NUMBER -lt 61 ]]
+then
+  echo $TEXT G:$NUMBER
+else
+  echo $TEXT O:$NUMBER
+fi
+
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------PROGRAM 4---------------------------------------------------
+
+touch fortune.sh
+
+chmod +x fortune.sh
+
+#!/bin/bash                                     // OPEN FILE AND ADD
+
+# Program to tell a persons fortune             // FILE ADD AFTER SHABANG
+
+echo -e "\n~~ Fortune Teller ~~\n"              // FILE ADD AFTER COMMENT
+
+./fortune.sh
+
+ARR=("a" "b" "c")
+
+echo ${ARR[1]}
+
+echo ${ARR[*]}
+
+declare -p ARR
+
+RESPONSES=("Yes" "No" "Maybe" "Outlook good" "Don't count on it" "Ask again later") // FILE ADD END
+
+echo ${RESPONSES[5]}                            // FILE ADD END
+
+./fortune.sh
+
+N=$(( RANDOM % 6 ))                             // FILE ADD AFTER RESPONSES
+
+echo ${RESPONSES[$N]}                           // FILE REPLACE LAST RESPONSES
+
+help
+
+help function
+
+GET_FORTUNE() {
+
+}                                               // FILE ADD AFTER N VAR DECLARATION
+
+echo Ask a yes or no question:                  // FILE ADD FUNC STATEMENT
+
+GET_FORTUNE                                     // FILE ADD AFTER FUNC DECLARATION
+
+./fortune.sh
+
+read QUESTION                                   // FILE ADD AFTER FUNC CALLED
+
+./fortune.sh
+
+help
+
+help until
+
+until [[ $QUESTION == test? ]]
+do
+  GET_FORTUNE
+  read QUESTION
+done                                            // FILE ADD AFTER FUNC DECLARATION,MOVE GET & rQ IN
+
+./fortune.sh
+
+help [[ expression ]]
+
+[[ hello == hello ]]; echo $?
+
+[[ hello == world ]]; echo $?
+
+[[ hello =~ el ]]; echo $?
+
+[[ "hello world" =~ "lo wor" ]]; echo $?
+
+[[ "hello world" =~ ^h ]]; echo $?
+
+[[ "hello world" =~ ^h.+d$ ]]; echo $?
+
+VAR="hello world"
+
+echo $VAR
+
+[[ $VAR == "hello world" ]]; echo $?
+
+[[ $VAR =~ \?$ ]]; echo $?
+
+[[ test? =~ \?$ ]]; echo $?
+
+[[ $QUESTION =~ \?$ ]]                          // FILE CHANGE UNTIL CONDITION
+
+./fortune.sh
+
+if [[ ! $1 ]]
+then
+  echo Ask a yes or no question:
+fi                                              // FILE IN FUNC IF, TRANSFER ECHO IN
+
+else
+  echo Try again. Make sure it ends with a question mark: // FILE ADD ELSE IN IF
+
+GET_FORTUNE again                               // FILE ADD again AFTER GET_FORTUNE
+
+GET_FORTUNE                                     // FILE ADD AFTER FUNC DEC BEFORE UNTIL
+
+./fortune.sh
+
+echo -e "\n${RESPONSES[$N]}"                    // FILE CHANGE ECHO LAST LINE TO:
+
+./fortune.sh
+
+----------------------------------------looks-------------------------------------------------------
+
+#!/bin/bash
+
+# Program to tell a persons fortune
+
+echo -e "\n~~ Fortune Teller ~~\n"
+
+RESPONSES=("Yes" "No" "Maybe" "Outlook good" "Don't count on it" "Ask again later")
+N=$(( RANDOM % 6 ))
+
+GET_FORTUNE() {
+if [[ ! $1 ]]
+then
+  echo Ask a yes or no question:
+else
+  echo Try again. Make sure it ends with a question mark:
+fi
+}
+
+GET_FORTUNE
+
+until [[ $QUESTION =~ \?$ ]]
+do
+  GET_FORTUNE again
+  read QUESTION
+done
+
+echo -e "\n${RESPONSES[$N]}"
+
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------PROGRAM 5---------------------------------------------------
+
+touch five.sh
+
+chmod +x five.sh
+
+#!/bin/bash                                     // FILE OPEN AND ADD
+
+# Program to run my other four programs         // FILE ADD
+
+./questionnaire.sh                              // FILE ADD END
+
+./five.sh
+
+./countdown.sh 3
+./bingo.sh
+./fortune.sh                              // FILE ADD END
+
+clear
+
+./five.sh
+
+help
+
+help type
+
+type echo
+
+type read
+
+type if
+
+type then
+
+type bash
+
+type psql
+
+type ./five.sh
+
+exit
+
+----------------------------------------looks-------------------------------------------------------
+
+#!/bin/bash
+
+# Program to run my other four programs
+
+./questionnaire.sh
+./countdown.sh 3
+./bingo.sh
+./fortune.sh
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
