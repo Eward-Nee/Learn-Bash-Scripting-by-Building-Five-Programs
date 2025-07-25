@@ -93,15 +93,12 @@ QUESTION2="Where are you from?"
 QUESTION3="What's your favorite coding website?"
 
 echo $QUESTION1
-
 read NAME
 
 echo $QUESTION2
-
 read LOCATION
 
 echo $QUESTION3
-
 read WEBSITE
 
 echo -e "\nHello $NAME from $LOCATION. I learned that your favorite coding website is $WEBSITE!"
@@ -134,17 +131,17 @@ man if
 
 help if
 
-if [[ $1 == arg1 ]]                 // open file and replace echo $1
+if [[ $1 == arg1 ]]
 then
   echo true
-fi
+fi                                  // open file and replace echo $1
 
 ./countdown.sh arg1
 
 ./countdown.sh anything
 
-else                                // open file and add after then...statements...
-  echo false
+else
+  echo false                        // open file and add after then...statements...
 
 ./countdown.sh anything
 
@@ -206,10 +203,10 @@ echo Include a positive integer as the first argument. // open file and change e
 
 help
 
-for (( i = $1; i > 0; i-- ))        // open file and change if true statement
+for (( i = $1; i > 0; i-- ))
 do
   echo $i
-done
+done                                // open file and change if true statement
 
 ./countdown.sh 10
 
@@ -235,18 +232,18 @@ echo -e "\n~~ Countdown Timer ~~\n" // open file and add after shabang
 
 ./countdown.sh 1
 
-: '                                 // open file and comment out for loop
+: '
 for loop...
-'
+'                                   // open file and comment out for loop
 
 help while
 
 I=$1                                // open file and add after comment
 
-while [[ $I -ge 0 ]]                // open file and add after I=$1
+while [[ $I -ge 0 ]]
 do
   echo $I
-done
+done                                // open file and add after I=$1
 
 (( I-- ))                           // open file and add after echo $I
 
@@ -308,6 +305,8 @@ echo $LANG
 
 declare -p
 
+echo $RANDOM
+
 NUMBER=$RANDOM                          // open file and change RAN declaration
 
 ./bingo.sh
@@ -364,28 +363,29 @@ TEXT="The next number is, "             // OPEN FILE AND ADD TO BOTTOM
 
 help let
 
-if (( NUMBER <= 15 ))                   // OPEN FILE AND ADD TO BOTTOM
+echo $NUMBER                            // OPEN FILE AND DELETE
+
+if (( NUMBER <= 15 ))
 then
   echo $TEXT B:$NUMBER
-fi
+fi                                      // OPEN FILE AND ADD TO BOTTOM
 
-echo $NUMBER                            // OPEN FILE AND REMOVE
-
-elif [[ $NUMBER -le 30 ]]               // OPEN FILE AND ADD AFTER STATEMENT IN IF
+elif [[ $NUMBER -le 30 ]]
 then
-  echo $TEXT I:$NUMBER
+  echo $TEXT I:$NUMBER                  // OPEN FILE AND ADD AFTER STATEMENT IN IF
 
-elif (( NUMBER < 46 ))                  // OPEN FILE AND ADD AFTER STATEMENT IN ELIF
+elif (( NUMBER < 46 ))
 then
-  echo $TEXT N:$NUMBER
+  echo $TEXT N:$NUMBER                  // OPEN FILE AND ADD AFTER STATEMENT IN ELIF
 
-elif [[ $NUMBER -lt 61 ]]               // OPEN FILE AND ADD AFTER STATEMENT IN ELIF
+elif [[ $NUMBER -lt 61 ]]
 then
-  echo $TEXT G:$NUMBER
+  echo $TEXT G:$NUMBER                  // OPEN FILE AND ADD AFTER STATEMENT IN ELIF
 
-else                                    // OPEN FILE AND ADD AFTER LAST ELIF
-  echo $TEXT O:$NUMBER
+else
+  echo $TEXT O:$NUMBER                  // OPEN FILE AND ADD AFTER LAST ELIF
 
+./bingo.sh
 ./bingo.sh
 
 ----------------------------------------looks-------------------------------------------------------
@@ -517,7 +517,7 @@ fi                                              // FILE IN FUNC IF, TRANSFER ECH
 else
   echo Try again. Make sure it ends with a question mark: // FILE ADD ELSE IN IF
 
-GET_FORTUNE again                               // FILE ADD again AFTER GET_FORTUNE
+GET_FORTUNE again                               // FILE replace all in until and read q in func decl
 
 GET_FORTUNE                                     // FILE ADD AFTER FUNC DEC BEFORE UNTIL
 
@@ -538,13 +538,15 @@ echo -e "\n~~ Fortune Teller ~~\n"
 RESPONSES=("Yes" "No" "Maybe" "Outlook good" "Don't count on it" "Ask again later")
 N=$(( RANDOM % 6 ))
 
-GET_FORTUNE() {
-if [[ ! $1 ]]
-then
-  echo Ask a yes or no question:
-else
-  echo Try again. Make sure it ends with a question mark:
-fi
+function GET_FORTUNE() {
+  if [[ ! $1 ]]
+  then
+    echo Ask a yes or no question:
+  else
+    echo Try again. Make sure it ends with a question mark:
+  fi
+
+  read QUESTION
 }
 
 GET_FORTUNE
@@ -552,7 +554,6 @@ GET_FORTUNE
 until [[ $QUESTION =~ \?$ ]]
 do
   GET_FORTUNE again
-  read QUESTION
 done
 
 echo -e "\n${RESPONSES[$N]}"
